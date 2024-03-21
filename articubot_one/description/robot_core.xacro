@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+<xacro:include filename="inertial_macros.xacro" />
+
+    <material name="white">
+        <color rgba="1 1 1 1" />
+    </material>
+
+    <material name="orange">
+        <color rgba="1 0.3 0.1 1"/>
+    </material>
+
+    <material name="blue">
+        <color rgba="0.2 0.2 1 1"/>
+    </material>
+
+    <material name="black">
+        <color rgba="0 0 0 1"/>
+    </material>
+
+    <material name="red">
+        <color rgba="1 0 0 1"/>
+    </material>
+
+    <!-- BASE LINK -->
+
+    <link name="base_link">
+
+    </link>
+
+     <!-- BASE_FOOTPRINT LINK -->
+
+    <joint name="base_footprint_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="base_footprint"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="base_footprint">
+    </link>
+
+    <joint name="chassis_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="chassis"/>
+        <origin xyz="0 0 0"/>
+    </joint>
+
+    <link name="chassis">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <mesh filename="file:///home/kaow/carkaow_ws/src/articubot_one/description/carkaow2.dae" scale =" 0.5 0.5 0.5"/>
+        </geometry>
+        <material name="white"/>
+    </visual>
+    <collision>
+        <geometry>
+            <mesh filename="file:///home/kaow/carkaow_ws/src/articubot_one/description/carkaow2.dae" scale =" 0.5 0.5 0.5"/>
+        </geometry>
+    </collision>
+    <xacro:inertial_box mass="0.5" x="0.3" y="0.3" z="0.15">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <gazebo reference="chassis">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <!-- FRONT LEFT WHEEL -->
+
+    <joint name="front_left_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="front_left_wheel"/>
+        <origin xyz="0.31 -0.18 0.05" rpy="-${pi/2} 0 0"/>
+        <axis xyz="1 0 0"/>
+    </joint>
+
+    <link name="front_left_wheel">
+        <visual>
+            <geometry>
+                <mesh filename="file:///home/kaow/carkaow_ws/src/articubot_one/description/wheel1.dae" scale =" 0.5 0.5 0.5"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="file:///home/kaow/carkaow_ws/src/articubot_one/description/wheel1.dae" scale =" 0.5 0.5 0.5"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="0.1" length="0.05" radius="0.05">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <!-- BACK LEFT WHEEL -->
+
+    <joint name="back_left_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="back_left_wheel"/>
+        <origin xyz="0.31 0.17 0.05" rpy="-${pi/2} 0 0"/>
+        <axis xyz="1 0 0"/>
+    </joint>
+
+    <link name="back_left_wheel">
+        <visual>
+            <geometry>
+                <mesh filename="file:///home/kaow/carkaow_ws/src/articubot_one/description/wheel1.dae" scale =" 0.5 0.5 0.5"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="file:///home/kaow/carkaow_ws/src/articubot_one/description/wheel1.dae" scale =" 0.5 0.5 0.5"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="0.1" length="0.05" radius="0.05">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <!-- FRONT RIGHT WHEEL -->
+
+    <joint name="front_right_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="front_right_wheel"/>
+        <origin xyz="-0.31 -0.18 0.05" rpy="-${pi/2} 0 0"/>
+        <axis xyz="1 0 0"/>
+    </joint>
+
+    <link name="front_right_wheel">
+        <visual>
+            <geometry>
+                <mesh filename="file:///home/kaow/carkaow_ws/src/articubot_one/description/wheel1.dae" scale =" 0.5 0.5 0.5"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="file:///home/kaow/carkaow_ws/src/articubot_one/description/wheel1.dae" scale =" 0.5 0.5 0.5"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="0.1" length="0.05" radius="0.05">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>  
+    </link>
+
+    <!-- BACK RIGHT WHEEL -->
+
+    <joint name="back_right_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="back_right_wheel"/>
+        <origin xyz="-0.31 0.17 0.05" rpy="-${pi/2} 0 0"/>
+        <axis xyz="1 0 0"/>
+    </joint>
+
+    <link name="back_right_wheel">
+        <visual>
+            <geometry>
+                <mesh filename="file:///home/kaow/carkaow_ws/src/articubot_one/description/wheel1.dae" scale =" 0.5 0.5 0.5"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="file:///home/kaow/carkaow_ws/src/articubot_one/description/wheel1.dae" scale =" 0.5 0.5 0.5"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="0.1" length="0.05" radius="0.05">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+
+
+    <!-- GRIPPER -->
+
+    <joint name="gripper_joint" type="revolute">
+        <parent link="base_link"/>
+        <child link="gripper"/>
+        <origin xyz="0 -0.34 0.01" rpy="-${pi/2} 0 0"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="1.57" upper="-0.052" effort="10" velocity="1"/>
+        <dynamics damping="1" friction="1"/>
+    </joint>
+
+    <link name="gripper">
+        <visual>
+            <geometry>
+                <mesh filename="file:///home/kaow/carkaow_ws/src/articubot_one/description/tapoo1.dae" scale =" 0.5 0.5 0.5"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="file:///home/kaow/carkaow_ws/src/articubot_one/description/tapoo1.dae" scale =" 0.5 0.5 0.5"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="0.1" length="0.05" radius="0.05">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+
+
+</robot>
